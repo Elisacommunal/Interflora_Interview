@@ -1,10 +1,19 @@
 <template>
     <div class="card">
         <div class="card-title">
-            <h1>Test API</h1>
-            <p>J'ai choisi une API avec des chats</p>
+            <h1>🎲😸<br>Cats name and photo randomizer<br>😸🎲</h1>
+            <p> Here is my project : <br>
+                It allows you to find a name for each cat. <br>
+                You can choose to edit either the name or the photo.
+            </p>
+            <p> The API I used for cat photos is this:</p>
+            <a href=" https://api.thecatapi.com/v1/images/search">Click here</a>
+            <p> As requested you will see a 25s modal appear after a request for a new photo.</p>
+            <p> For the cat names I used the "cat-names" dependency which allows you to have random names.</p>
+            <p> This project was carried out with Vue 3 and without a CSS framework</p>
+            <p> Take a look !</p>
             <!-- Button call function randomName() -->
-            <button @click="randomName()" class="card--btn"><i class="fas fa-paw"></i> My name <i class="fas fa-paw"></i> </button>
+            <button @click="randomName()" class="card--btn"><i class="fas fa-paw"></i> Cat name <i class="fas fa-paw"></i> </button>
             <div >
             <!-- Show the name -->
             <p class="name"> {{dataName}} </p>
@@ -32,13 +41,13 @@
         </header>
         <!-- modal body -->
         <section class="modal-body">
-            <slot name="body">Voulez-vous voir un nouveau chat ?</slot>
+            <slot name="body">Do you want to see a new cat ?</slot>
         </section>
         <!-- modal footer -->
         <footer class="modal-footer">
-            <slot name="footer">Si oui clique en dessous</slot>
+            <slot name="footer">If yes click below</slot>
             <!-- Button call function randomImage() -->
-            <button type="button" class="btn-green" @click="randomImage()"><i class="fas fa-paw"></i> Oui <i class="fas fa-paw"></i></button>
+            <button type="button" class="btn-green" @click="randomImage()"><i class="fas fa-paw"></i> Yes <i class="fas fa-paw"></i></button>
         </footer>
         </div>
     </div>
@@ -134,7 +143,7 @@ export default {
 }
 
 .card-title{
-    width: 200px;
+    width: 400px;
     text-align: center;
     display: block;
     margin-left: auto;
@@ -249,6 +258,14 @@ export default {
     border-radius: 75px;
     box-shadow: gray 5px 5px 35px;
     }
+    .card-title{
+    width: 200px;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 }
 
 </style>
