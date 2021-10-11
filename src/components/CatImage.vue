@@ -78,6 +78,7 @@ export default {
         randomImage(){
             // If there is a modal opened we hide it
             this.isModalVisible = false;
+            clearTimeout(this.TimeOut)
             // We call the API with axios
             axios.get('https://api.thecatapi.com/v1/images/search', {
                 method: 'GET',
@@ -86,7 +87,7 @@ export default {
               // We add the response in data 'dataCats'
                 this.dataCats = response.data;
                 // Function to set up the 25s timer
-                setTimeout(function(){ 
+                  this.TimeOut = setTimeout(function(){ 
                   this.isModalVisible = true; 
                   }.bind(this), 25000)
             })   
@@ -97,7 +98,7 @@ export default {
         },
         // Function that shows the modal
         showModal() {
-        this.isModalVisible = true;
+            this.isModalVisible = true;
         },
         // Function that closes the modal
         closeModal() {
