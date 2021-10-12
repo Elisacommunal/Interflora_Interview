@@ -75,22 +75,19 @@ export default {
     },
     methods: {
         // Function that recovers random photos
-        randomImage(){
+       async randomImage(){
             // If there is a modal opened we hide it
             this.isModalVisible = false;
             clearTimeout(this.TimeOut)
             // We call the API with axios
-            axios.get('https://api.thecatapi.com/v1/images/search', {
-                method: 'GET',
-                })
-            .then((response) => {
+           const response = await axios.get ('https://api.thecatapi.com/v1/images/search')
               // We add the response in data 'dataCats'
-                this.dataCats = response.data;
+                this.dataCats = await response.data;
                 // Function to set up the 25s timer
                   this.TimeOut = setTimeout(function(){ 
                   this.isModalVisible = true; 
                   }.bind(this), 25000)
-            })   
+           
         },
         // Function that recovers random names
         randomName(){
