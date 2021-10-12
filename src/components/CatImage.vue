@@ -22,8 +22,11 @@
             <button @click="randomImage()" class="card--btn"><i class="fas fa-paw"></i> Meow <i class="fas fa-paw"></i> </button>
         </div>
         <!-- If there is data in 'dataCats', display it here  -->
-        <div v-if="dataCats" v-for="item in dataCats" :key="item.id">
+       <!--  <div v-if="dataCats" v-for="item in dataCats" :key="item.id">
             <img class="card--image" v-if="item.url" :src="item.url">
+        </div> -->
+        <div v-if="dataCats">
+            <img class="card--image" :src="dataCats[0].url">
         </div>
         <!-- Else we display the default image  -->
         <div v-else>
@@ -87,7 +90,6 @@ export default {
                   this.TimeOut = setTimeout(function(){ 
                   this.isModalVisible = true; 
                   }.bind(this), 25000)
-           
         },
         // Function that recovers random names
         randomName(){
