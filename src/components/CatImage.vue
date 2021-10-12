@@ -13,18 +13,16 @@
             <p> This project was carried out with Vue 3 and without a CSS framework</p>
             <p> Take a look !</p>
             <!-- Button call function randomName() -->
-            <button @click="randomName()" class="card--btn"><i class="fas fa-paw"></i> Cat name <i class="fas fa-paw"></i> </button>
+            <Button @click="randomName()" name="Cat name"/>
+            <!-- <button  class="card--btn"><i class="fas fa-paw"></i> Cat name <i class="fas fa-paw"></i> </button> -->
             <div >
             <!-- Show the name -->
             <p class="name"> {{dataName}} </p>
             </div>
             <!-- Button call function randomImage() -->
-            <button @click="randomImage()" class="card--btn"><i class="fas fa-paw"></i> Meow <i class="fas fa-paw"></i> </button>
+            <Button @click="randomImage()" name="Meow"/>
         </div>
         <!-- If there is data in 'dataCats', display it here  -->
-       <!--  <div v-if="dataCats" v-for="item in dataCats" :key="item.id">
-            <img class="card--image" v-if="item.url" :src="item.url">
-        </div> -->
         <div v-if="dataCats">
             <img class="card--image" :src="dataCats[0].url">
         </div>
@@ -33,9 +31,8 @@
             <img class="card--image" src="../assets/Cat.jpg">
         </div>
     </div>
-    <!--MODAL-->
-    <transition name="modal-fade" v-show="isModalVisible">
-    <div class="modal-backdrop">
+    <transition name="modal-fade" v-if="isModalVisible">
+      <div class="modal-backdrop">
         <div class="modal">
         <!-- modal header -->
         <header class="modal-header">
@@ -54,10 +51,13 @@
         </footer>
         </div>
     </div>
-</transition>
-    
+    <!-- <Modal/> -->
+    </transition>
 </template>
 <script>
+/* import Modal from "@/components/Modal.vue" */
+import Button from "@/components/Button.vue"
+
 // Add axios for communicate with API
 import axios from "axios";
 // Const for call 'cat-name'
@@ -72,9 +72,13 @@ export default {
             // Function to set up the 25s timer modal
             TimeOut: setTimeout(function(){ 
               this.isModalVisible = true; 
-              }.bind(this), 25000),
+              }.bind(this), 1000),
             dataName : catNames.random()
         }
+    },
+    components:{
+    /*   Modal, */
+      Button
     },
     methods: {
         // Function that recovers random photos
@@ -89,7 +93,7 @@ export default {
                 // Function to set up the 25s timer
                   this.TimeOut = setTimeout(function(){ 
                   this.isModalVisible = true; 
-                  }.bind(this), 25000)
+                  }.bind(this), 1000)
         },
         // Function that recovers random names
         randomName(){
@@ -157,7 +161,7 @@ export default {
   margin: 0;
 }
 
-/* --- Layout of the Modal --- */ 
+ /* --- Layout of the Modal --- */ 
 
 .modal-backdrop {
   position: fixed;
@@ -227,9 +231,9 @@ export default {
   cursor: pointer;
 }
 
-/* --- Modal transition --- */ 
+/* --- Modal transition ---  */
 
-.modal-fade-enter,
+.modal-fade-enter-from,
 .modal-fade-leave-to {
   opacity: 0;
 }
@@ -237,7 +241,7 @@ export default {
 .modal-fade-enter-active,
 .modal-fade-leave-active {
   transition: opacity 1s ease;
-} 
+}  
 
 
 @media screen and (max-width: 640px) {

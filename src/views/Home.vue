@@ -1,15 +1,18 @@
 <template>
     <CatImage/>
+
 </template>
 
 <script>
 // Import the file CatImage
-import CatImage from '../components/CatImage.vue';
+import CatImage from '@/components/CatImage.vue';
+/* import Modal from "@/components/Modal.vue" */
 
 export default {
     name: "home",
     components: {
         CatImage,
+        /* Modal, */
     }
 }
 
